@@ -1,0 +1,22 @@
+{% extends "leaderboard/base.html" %}
+
+{% block title %}
+Squad Index
+{% endblock title %}
+
+{% block body %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a><br>
+  <a href="{% url 'leaderboard:register' %}">Register User</a>
+{% endif %}
+<br>
+<h1>Squad Index</h1>
+
+{% endblock body %}
+
+
+

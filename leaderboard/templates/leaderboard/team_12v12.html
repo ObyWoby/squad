@@ -1,0 +1,40 @@
+{% extends "leaderboard/base.html" %}
+
+{% block title %}
+Squad 12v12
+{% endblock title %}
+
+{% block body %}
+
+<a href="{% url 'leaderboard:team-12v12-add' %}">Create a team</a><br>
+<br>
+<h1>Squad 12v12</h1>
+<br>
+{% if all_teams %}
+    <ul>
+            {% for team in all_teams %}
+            <li><a href="{% url 'leaderboard:detail-12v12' team.id %}">{{ team.team_name }}</a></li>
+            {% endfor %}
+        </ul>
+
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Team Name</th>
+            <th>Score</th>
+        </tr>
+        {% for team in all_teams %}
+        <tr>
+            <td>1</td>
+            <td><a href="{% url 'leaderboard:detail-12v12' team.id %}">{{ team.team_name }}</a></td>
+            <td>{{ team.elo }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+<h3>No teams entered yet</h3>
+{% endif %}
+{% endblock body %}
+
+
+

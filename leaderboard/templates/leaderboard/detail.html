@@ -1,0 +1,25 @@
+{% extends "leaderboard/base.html" %}
+
+{% block title %}
+{{ team.team_name }}
+{% endblock title %}
+
+{% block body %}
+<img src="{{ team.logo.url }}">
+
+<h1>{{ team.team_name }}</h1>
+
+<h3>Founed by:</h3>
+<p>{{ team.founder }}</p>
+
+<h3>Founded on:</h3>
+<p>{{ team.date_founded }}</p>
+
+<h3>Bio</h3>
+<p>{{ team.bio }}</p>
+
+{% endblock body %}
+
+
+
+
