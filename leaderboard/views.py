@@ -49,8 +49,6 @@ class UserFormView(View):
 
 
 
-
-
 # The following are view functions. I didn't convert them to class based generic views because
 # I wasn't sure how to make the index homepage using a generic view, nor how to make generic views
 # and view functions co-exist in the same views document.
@@ -93,15 +91,6 @@ def detail_9v9(request, pk):
     return render(request, 'leaderboard/detail.html', { 'team':team })
 
 
-# Below I have used generic views for the form to add a team.
-#class Team12v12Create(CreateView):
-    #model = Team_12v12
-    # I need to automatically fill in date_founded, founder, elo, and sort the team admins functionality. 
-    # When I've done this need to remove them from the field list.
-    #fields = ['team_name', 'date_founded', 'founder', 'logo', 'bio', 'elo', 'team_admins']
-
-# Replaces team creation above in order to have custom form
-
 def Team12v12Create(request):
     if request.method == 'POST':
         user = request.user
@@ -112,7 +101,9 @@ def Team12v12Create(request):
             
             team.founder = user
             team.save()
-            return reverse('detail-12v12', args=(team.pk,))
+
+            pk = team.pk
+            return redirect(reverse('leaderboard:detail-12v12', kwargs={ 'pk': str(pk) }))
     else:
         form = RegisterTeam12v12()
 

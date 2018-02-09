@@ -9,14 +9,6 @@ class UserForm(forms.ModelForm):
         model = LadderUser
         fields = ['username', 'email', 'password', 'profile_pic']
 
-# Custom login replaced with built in Django auth mechanisms
-#class UserLoginForm(forms.ModelForm):
-    #password = forms.CharField(widget=forms.PasswordInput)
-
-    #class Meta:
-        #model = LadderUser
-        #fields = ['username', 'password']
-
 
 
 class RegisterTeam12v12(forms.ModelForm):
